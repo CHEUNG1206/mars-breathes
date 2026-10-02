@@ -2,6 +2,10 @@
 
 ![Air pressure at Gale Crater on Mars, one loop per Martian year from 2012 to 2026: every loop bulges outward in southern summer and dents inward in southern winter](out/mars-breathes.png)
 
+**Live page:** <https://CHEUNG1206.github.io/mars-breathes/>. Hover any sol, switch
+years on and off, press Play. Then
+[see where the rover was](https://CHEUNG1206.github.io/mars-breathes/map.html).
+
 ## The phenomenon
 
 Every year a large share of the Martian atmosphere freezes out of the sky. Mars's air
@@ -13,16 +17,25 @@ orbit is eccentric and the northern winter is shorter and warmer. So the pressur
 Mars goes up and down twice a year, unevenly, like a slow breath. I wanted to see it
 measured from the ground, by one instrument, year after year.
 
+![The same loops drawing themselves, sol by sol, from 2012 to 2026](out/mars-breathes.gif)
+
 ## The source
 
-The numbers come from Curiosity's weather station (REMS), published by NASA and the
+The pressures come from Curiosity's weather station (REMS), published by NASA and the
 Centro de Astrobiología as a JSON feed with no key:
 <https://mars.nasa.gov/rss/api/?feed=weather&category=msl&feedtype=json>.
-The file in `data/` holds 4,745 entries, one per sol (a Martian day, 24 h 40 min) from
-sol 1 in August 2012 to sol 4995 in August 2026. Each entry has the sol, the Earth
-date, the season as solar longitude (`ls`, in degrees), minimum and maximum air
-temperature (°C) and the daily pressure (`pressure`, in pascals); 4,718 of them have a
-pressure reading. Every value arrives as text, and `--` means no reading.
+`data/curiosity-rems-weather.json` holds 4,745 entries, one per sol (a Martian day,
+24 h 40 min), from sol 1 in August 2012 to sol 4995 in August 2026. Each entry has the
+sol, the Earth date, the season as solar longitude (`ls`, in degrees), minimum and
+maximum air temperature (°C) and the daily pressure (`pressure`, in pascals). 4,718
+of them have a pressure reading. Every value arrives as text, and `--` means no reading.
+
+The route comes from the map behind NASA's "Where is Curiosity?" page:
+<https://mars.nasa.gov/mmgis-maps/MSL/Layers/json/MSL_waypoints.json>.
+`data/curiosity-waypoints.json` is a GeoJSON file with 1,384 waypoints, one per drive,
+each with its sol, longitude and latitude (degrees) and elevation (`elev_geoid`, in metres
+relative to the Martian datum, so negative means below it). The map underneath is
+[OpenPlanetaryMap](https://www.openplanetary.org/opm), an open-source basemap of Mars.
 
 ## What the picture shows
 
@@ -34,13 +47,17 @@ above Gale Crater, every year, for eight years.
 
 What it hides: the time of day (REMS measures at different hours, and the feed gives
 one number per sol), dust storms and the sols with no reading, which are just breaks
-in the lines. It also hides the rover itself. The loops shrink year by year mostly
-because Curiosity has been climbing Mount Sharp, and higher up the air is thinner, not
-because Mars is losing its atmosphere.
+in the lines. It also hides the rover itself. The loops shrink year by year because
+Curiosity has been climbing Mount Sharp, not because Mars is losing its atmosphere.
+The map shows this. Between Mars years 32 and 37 the rover climbed 715 m, and its
+yearly average pressure fell from 842 to 797 Pa. Height alone predicts 789 Pa.
 
 ## Run it
 
 ```
 uv run fetch.py
 uv run plot.py
+uv run animate.py
+uv run web.py
+uv run map.py
 ```

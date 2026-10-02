@@ -29,4 +29,9 @@ coordinates that put them on top of the legend in the middle of the circle; the
 assistant's first idea for the message ("the atmosphere loses a quarter of its mass")
 was stronger than what one weather station at one spot can show, so the README says
 "a quarter of the air above Gale Crater" instead; the loops shrinking each year could
-be misread as Mars losing air, when it is mostly the rover driving uphill.]
+be misread as Mars losing air, when it is mostly the rover driving uphill.
+More from the GIF/web/map round: the web script could not be called site.py because
+that name clashes with a module built into Python, so it is web.py; Plotly's web page
+played its animation by itself on load and showed only the first year until that was
+switched off; OpenStreetMap only covers Earth, so the map uses OpenPlanetaryMap, whose
+Mars tiles go blurry past zoom 9.]
