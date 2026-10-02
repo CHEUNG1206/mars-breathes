@@ -21,9 +21,9 @@ from pathlib import Path
 
 import folium
 
-from plot import load, mars_years
+from plot import SCALE_HEIGHT, load, mars_years
 
-SCALE_HEIGHT = 11_000      # metres: on Mars the air thins by a factor e every ~11 km of climb
+
 TILES = ("https://cartocdn-gusc.global.ssl.fastly.net/opmbuilder/api/v1/map/named/"
          "opm-mars-basemap-v0-2/all/{z}/{x}/{y}.png")
 CREDIT = ("map: <a href='https://www.openplanetary.org/opm'>OpenPlanetaryMap</a> (CC BY) · "
