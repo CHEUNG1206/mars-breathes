@@ -25,7 +25,7 @@ PICTURE = "mars-breathes.png"
 
 FIRST_MARS_YEAR = 31      # Curiosity landed at Ls 150 of Mars Year 31 (August 2012)
 GAP = 10                  # more sols than this without a reading breaks the line
-SCALE_HEIGHT = 11_100     # metres: Mars's air thins by a factor e every 11.1 km up (NASA Mars fact sheet)
+SCALE_HEIGHT = 11_000     # metres: Mars's air thins by a factor e every 11 km up (NASA Mars fact sheet)
 
 HERE = Path(__file__).parent
 DATA = HERE / "data" / FILE

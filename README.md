@@ -1,6 +1,6 @@
 # Mars breathes
 
-![Air pressure at Gale Crater on Mars, one loop per Martian year from 2012 to 2026: every loop bulges outward in southern summer and dents inward in southern winter](out/mars-breathes.png)
+![Air pressure at Gale Crater on Mars, one loop per Martian year from 2012 to 2026, as measured (left) and levelled to the landing-site height (right): every loop bulges outward in southern summer and dents inward in southern winter, and once levelled the years lie on top of each other](out/mars-breathes.png)
 
 **Live page:** <https://CHEUNG1206.github.io/mars-breathes/>. Hover any sol, switch
 years on and off, press Play. Then
@@ -36,6 +36,16 @@ The route comes from the map behind NASA's "Where is Curiosity?" page:
 each with its sol, longitude and latitude (degrees) and elevation (`elev_geoid`, in metres
 relative to the Martian datum, so negative means below it). The map underneath is
 [OpenPlanetaryMap](https://www.openplanetary.org/opm), an open-source basemap of Mars.
+To level the pressures, `plot.py` uses a scale height of 11.0 km, from NASA's
+[Mars fact sheet](https://nssdc.gsfc.nasa.gov/planetary/factsheet/marsfact.html).
+
+The two Viking landers come from the NASA PDS Atmospheres Node:
+<https://pds-atmospheres.nmsu.edu/PDS/data/vl_1001/data/vl_avep.dat>, with the label that
+describes its columns (`vl_avep.lbl`) saved next to it.
+`data/viking-daily-pressure.dat` is a fixed-width text table with 3,297 rows, one per
+lander per sol: Viking Lander 1 for 2,246 sols (1976–1982) and Viking Lander 2 for
+1,051 sols (1976–1980). Each row has the season (Ls, degrees) and the daily mean
+pressure in millibars (1 mbar = 100 Pa). `-9.999` means no reading.
 
 ## What the picture shows
 
@@ -52,12 +62,33 @@ Curiosity has been climbing Mount Sharp, not because Mars is losing its atmosphe
 The map shows this. Between Mars years 32 and 37 the rover climbed 715 m, and its
 yearly average pressure fell from 842 to 797 Pa. Height alone predicts 789 Pa.
 
+The right half of the picture takes the climb out. Each reading is scaled back to
+the landing site's height, using the rover's elevation on that sol. The eight
+loops then lie on top of each other. At the same season, the years differed by a
+median of 63 Pa as measured and by 6 Pa once levelled. The breath repeats; the
+atmosphere is not leaking away.
+
+One rover in one crater cannot speak for a whole planet, so the second picture adds
+the two Viking landers. They stood thousands of kilometres from Gale Crater and
+measured forty years earlier. All three sites thin out in southern winter and fill
+up in southern summer, at the same seasons. A local weather effect would not do
+that; a planet-wide one would. The sites sit at different heights, so their loops
+differ in size.
+
+![Daily air pressure at three landing sites on one circle: Curiosity 2012–2026, Viking Lander 1 1976–1982, Viking Lander 2 1976–1980, all lowest in southern winter and highest in southern summer](out/three-landers.png)
+
+What this hides: three points are still not a global average. Viking Lander 2, far
+north in Utopia Planitia, swings higher and more raggedly in northern winter, from
+local storms and cold air that the other two sites do not see. The levelling assumes
+one scale height all year, although the real one changes with temperature.
+
 ## Run it
 
 ```
 uv run fetch.py
 uv run plot.py
 uv run animate.py
+uv run landers.py
 uv run web.py
 uv run map.py
 ```
