@@ -85,7 +85,7 @@ def main():
                             angle=22, gridcolor=FAINT, linecolor=FAINT, tickfont=dict(size=10)),
         ),
         legend=dict(orientation="h", x=0.5, xanchor="center", y=-0.07, font=dict(size=12)),
-        margin=dict(t=110, b=150, l=60, r=60), height=860,
+        margin=dict(t=110, b=190, l=60, r=60), height=900,
         updatemenus=[dict(type="buttons", x=0.0, y=1.02, xanchor="left", showactive=False,
                           bgcolor=FAINT, font=dict(color=INK),
                           buttons=[dict(label="▶ Play the years", method="animate",
@@ -95,15 +95,19 @@ def main():
         annotations=[dict(text="Angle: season (solar longitude, Ls). Distance from centre: daily "
                                "pressure in pascals. Gaps are sols with no reading.<br>"
                                "Data: NASA/JPL-Caltech, CAB (CSIC-INTA), Curiosity REMS · "
+                               "<a href='map.html' style='color:#fd8d3c'>Why do the loops shrink? See where the rover was →</a><br>"
                                "<a href='https://mars.nasa.gov/msl/mission/weather/' "
                                "style='color:#e8ddd4'>mars.nasa.gov</a>",
-                          x=0.5, y=-0.2, xref="paper", yref="paper", showarrow=False,
+                          x=0.5, y=-0.25, xref="paper", yref="paper", showarrow=False,
                           font=dict(size=11, color="#8f8279"))],
     )
 
     SITE.mkdir(exist_ok=True)
     fig.write_html(SITE / "index.html", include_plotlyjs="cdn", full_html=True, auto_play=False,
                    config={"displaylogo": False})
+    page = SITE / "index.html"
+    page.write_text(page.read_text(encoding="utf-8").replace(
+        "<head>", "<head><title>Mars breathes</title>", 1), encoding="utf-8")
     print(f"wrote site/index.html ({(SITE / 'index.html').stat().st_size // 1024} KB) "
           f"from {len(every)} readings in {len(years)} years")
 
