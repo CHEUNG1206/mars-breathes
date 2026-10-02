@@ -26,6 +26,14 @@ FILE = "curiosity-rems-weather.json"
 ROUTE_URL = "https://mars.nasa.gov/mmgis-maps/MSL/Layers/json/MSL_waypoints.json"
 ROUTE_FILE = "curiosity-waypoints.json"
 
+# The two Viking landers, 1976-1982, at two other places on Mars: one daily average
+# pressure per sol, from the NASA PDS Atmospheres Node. The .lbl file is the label
+# that says what each column is. Used by landers.py.
+VIKING_URL = "https://pds-atmospheres.nmsu.edu/PDS/data/vl_1001/data/vl_avep.dat"
+VIKING_FILE = "viking-daily-pressure.dat"
+VIKING_LABEL_URL = "https://pds-atmospheres.nmsu.edu/PDS/data/vl_1001/data/vl_avep.lbl"
+VIKING_LABEL_FILE = "viking-daily-pressure.lbl"
+
 HERE = Path(__file__).parent
 DATA = HERE / "data"
 
@@ -46,5 +54,6 @@ def fetch(url, path):
 
 
 if __name__ == "__main__":
-    for url, name in [(URL, FILE), (ROUTE_URL, ROUTE_FILE)]:
+    for url, name in [(URL, FILE), (ROUTE_URL, ROUTE_FILE),
+                      (VIKING_URL, VIKING_FILE), (VIKING_LABEL_URL, VIKING_LABEL_FILE)]:
         fetch(url, DATA / name)
