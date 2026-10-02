@@ -34,4 +34,7 @@ More from the GIF/web/map round: the web script could not be called site.py beca
 that name clashes with a module built into Python, so it is web.py; Plotly's web page
 played its animation by itself on load and showed only the first year until that was
 switched off; OpenStreetMap only covers Earth, so the map uses OpenPlanetaryMap, whose
-Mars tiles go blurry past zoom 9.]
+Mars tiles go blurry past zoom 9.
+From the "more data" round: the assistant first wrote the scale height as 11.1 km
+and cited NASA's Mars fact sheet, but the fact sheet says 11.0 km, so the code and
+README were corrected to match the source.]
