@@ -4,8 +4,8 @@
 # ///
 
 """
-Fetch Curiosity's daily weather from Gale Crater once, save the raw reply to data/,
-and never fetch again.
+Fetch Curiosity's daily weather from Gale Crater, and the route it drove, once
+each; save the raw replies to data/, and never fetch again.
 
     uv run fetch.py
 
@@ -20,6 +20,11 @@ import requests
 
 URL = "https://mars.nasa.gov/rss/api/?feed=weather&category=msl&feedtype=json"
 FILE = "curiosity-rems-weather.json"
+
+# Where the rover was on each sol it drove: longitude, latitude and elevation of every
+# stop, from the MMGIS map behind NASA's "Where is Curiosity?" page. Used by map.py.
+ROUTE_URL = "https://mars.nasa.gov/mmgis-maps/MSL/Layers/json/MSL_waypoints.json"
+ROUTE_FILE = "curiosity-waypoints.json"
 
 HERE = Path(__file__).parent
 DATA = HERE / "data"
@@ -41,4 +46,5 @@ def fetch(url, path):
 
 
 if __name__ == "__main__":
-    fetch(URL, DATA / FILE)
+    for url, name in [(URL, FILE), (ROUTE_URL, ROUTE_FILE)]:
+        fetch(url, DATA / name)
