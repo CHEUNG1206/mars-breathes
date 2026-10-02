@@ -107,7 +107,8 @@ def main():
                    config={"displaylogo": False})
     page = SITE / "index.html"
     page.write_text(page.read_text(encoding="utf-8").replace(
-        "<head>", "<head><title>Mars breathes</title>", 1), encoding="utf-8")
+        "<head>", "<head><title>Mars breathes</title><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">"
+        f"<style>html, body {{ margin: 0; background: {PAPER}; }}</style>", 1), encoding="utf-8")
     print(f"wrote site/index.html ({(SITE / 'index.html').stat().st_size // 1024} KB) "
           f"from {len(every)} readings in {len(years)} years")
 
