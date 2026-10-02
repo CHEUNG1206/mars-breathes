@@ -76,9 +76,14 @@ def with_breaks(readings):
     return angles, radii
 
 
+def load(path=DATA):
+    """Every sol in the file, as a list of dicts with text values.
+    The Spanish disclaimer at the top is not valid UTF-8, so replace what breaks."""
+    return json.loads(path.read_bytes().decode("utf-8", errors="replace"))["soles"]
+
+
 def main():
-    # The Spanish disclaimer at the top is not valid UTF-8, so replace what breaks.
-    soles = json.loads(DATA.read_bytes().decode("utf-8", errors="replace"))["soles"]
+    soles = load()
     print(f"{DATA.name}: {len(soles)} sols")
 
     years = mars_years(soles)
