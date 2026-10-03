@@ -32,8 +32,9 @@ forty years apart, agreeing on the timing is much harder to explain away. In
 mathematics terms, the levelling removes a confounding variable, and the Vikings are
 a replication. Three sites still do not prove how much air the whole planet loses.
 What they support is a seasonal pattern that repeats at every site we have, which
-fits a planet-wide cycle. I also
-kept the radius of the circle starting at zero, so the picture does not exaggerate
+fits a planet-wide cycle.
+
+I also kept the radius of the circle starting at zero, so the picture does not exaggerate
 how much air goes away.
 
 ## Rejected
@@ -48,8 +49,8 @@ I also learned to check the numbers the assistant gives. It wrote the scale heig
 as 11.1 km and cited NASA's Mars fact sheet. The fact sheet says 11.0 km, so the
 code and the README were changed to match the source.
 
-Finally, I asked for more landers, but only seven have ever measured pressure on the
-ground: Viking 1 and 2, Pathfinder, Phoenix, Curiosity, InSight, Perseverance and
+Finally, I asked for more landers, but only a handful have measured pressure on the
+ground for long. The main ones are Viking 1 and 2, Pathfinder, Phoenix, Curiosity, InSight, Perseverance and
 Zhurong. Most of the others only cover a few months, or come as thousands of files
 with gaps, so I left them out. I listed them in the README so a reader knows they
 exist and why they are not here.
