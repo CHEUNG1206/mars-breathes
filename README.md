@@ -82,6 +82,23 @@ north in Utopia Planitia, swings higher and more raggedly in northern winter, fr
 local storms and cold air that the other two sites do not see. The levelling assumes
 one scale height all year, although the real one changes with temperature.
 
+## Who else measured the air, and is not here
+
+Curiosity and the two Vikings are not the only barometers that have stood on Mars.
+Mars Pathfinder measured pressure in Ares Vallis in 1997, for a few months. Phoenix
+measured it near the north pole in 2008, for one northern summer. InSight measured
+it in Elysium Planitia from 2018 to 2022. Perseverance's MEDA station has measured
+it in Jezero Crater since 2021, and China's Zhurong rover measured it in Utopia
+Planitia in 2021–22. Orbiters also estimate surface pressure from above, from how
+the atmosphere bends radio signals and absorbs light, but those are not readings
+taken on the ground.
+
+This repo uses the Vikings and Curiosity because they are the longest records,
+covering several Martian years each, and because each comes as one small file that
+anyone can download without a key. The others are shorter, or are archived as
+thousands of files per mission. Leaving them out is one more reason "three sites"
+is not the same as "the whole planet".
+
 ## Run it
 
 ```
